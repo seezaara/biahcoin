@@ -1,7 +1,7 @@
 # Baih coin
 the tap bot for make money similar to ( telegram notcoin )
 
-> ![test demo bot now ! ](http://t.me/Biahcoinbot/app)
+> [test demo bot now !](http://t.me/Biahcoinbot/app)
 
 ##  how to setup your own
 
