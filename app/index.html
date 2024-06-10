@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Document</title>
+    <base href="/app/app">
+    <link rel="stylesheet" href="coin.css">
+    <script src="./telegram-web-app.js"></script>
+</head>
+<style>
+    .fill {
+
+        width: 100%;
+        height: 100%;
+    }
+
+    * {
+
+        position: relative;
+    }
+
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        background-color: #222222;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+    }
+
+
+    .main {
+        overflow: hidden;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .shadowp {
+        position: absolute;
+    }
+
+    .shadow {
+        top: 120px;
+        width: 500%;
+        height: 500%;
+        border-radius: 100%;
+        box-sizing: content-box;
+        box-shadow:
+            inset 0 0 50px #fff,
+            inset 20px 0 80px #f0f,
+            inset -20px 0 80px #0ff,
+            inset 20px 0 300px #f0f,
+            inset -20px 0 300px #0ff,
+            0 0 50px #fff,
+            -10px 10px 80px #f0f,
+            10px 8px 80px #0ff;
+        border: 1px #fff solid;
+    }
+
+    .body {}
+
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .f {
+        flex: 1;
+    }
+
+    .center {
+
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .centerf {
+
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .coinholder {
+        padding: 8% 0;
+        width: 100vw;
+        font-size: 6vw;
+    }
+
+    .symbol {
+
+        width: 50%;
+    }
+
+    .biah {
+        --face: #ffb300;
+        --circle: #ffe082;
+        --side: #ffe082;
+        --slide: #ffb300;
+        transition: 300ms;
+    }
+
+    .remain,
+    .colect {
+        font-size: 25px;
+        padding: 50px 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+    }
+
+    .remain span {
+        font-weight: bold;
+    }
+
+    .colect {
+        font-size: 40px;
+        padding: 20px 0;
+    }
+
+    .icon {
+        width: 1em;
+        height: 1em;
+        background: url(./icon.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        display: inline-block;
+        margin-right: 0.3em;
+        vertical-align: top;
+        vertical-align: -0.2em;
+    }
+
+    .ranking {}
+
+    .profile {
+        display: flex;
+        margin: 3% 5%;
+    }
+
+    .profile_img {
+        width: 50px;
+        height: 50px;
+        margin: 2px 10px;
+        border-radius: 100%;
+        overflow: hidden;
+    }
+
+
+    .profile_name {
+        color: #fff;
+        font-size: 22px;
+    }
+
+    .profile_contact,
+    .showmore {
+        color: #979797;
+        font-size: 17px;
+    }
+
+    .showmore {
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .none {
+        display: none;
+    }
+
+    .like {
+        position: absolute;
+        z-index: 111;
+        pointer-events: none;
+    }
+
+    .likes {
+        color: #fff;
+        font-size: 30px;
+        position: absolute;
+        transition: left ease-in 300ms, ease-in top 300ms, opacity ease-in 350ms;
+    }
+
+    .likes_img {
+        width: 1.2em;
+        height: 1.2em;
+        background: url(./thumb.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        display: inline-block;
+        vertical-align: top;
+        vertical-align: -0.2em;
+    }
+
+    .hide {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="like fill">
+        </div>
+        <div class="shadowp fill">
+            <div class="shadow center">
+            </div>
+        </div>
+        <div class="body fill none">
+            <div class="column">
+                <div class="remain center">
+                    <span class="icon"></span><span>500,000,000,000,000</span>
+                </div>
+
+                <div class="coinholder center">
+                    <div class="container center">
+                        <div class="coin biah">
+                            <div class="face front">
+                                <img class="symbol" src="thumb.svg" alt="">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="face back">
+                                <img class="symbol" src="thumb.svg" alt="">
+                                <div class="circle"></div>
+                            </div>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                            <figure class="side"></figure>
+                        </div>
+                    </div>
+                    <div class="colect">
+                        <span class="icon"></span><span>500,463,860</span>
+                    </div>
+                </div>
+                <div class="ranking center">
+                    <div></div>
+                    <div></div>
+                    <div class="showmore">show more</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    function stop(e) {
+        console.log(document.body.scrollTop)
+        if (document.body.scrollTop <= 10)
+            document.body.scrollTop = 10
+    }
+    Telegram.WebApp.expand()
+    document.body.addEventListener("scroll", stop, { passive: false });
+    document.querySelector(".coinholder").addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+    Telegram.WebApp.ready()
+</script>
+<script>
+    if (Telegram.WebApp.initDataUnsafe.user) {
+        //==============  
+        var isready = false
+
+        const like = document.querySelector(".like")
+        const remain = document.querySelector(".remain").children[1]
+        const colect = document.querySelector(".colect").children[1]
+        const ranking = document.querySelector(".ranking").children[0]
+        const rankingmore = document.querySelector(".ranking").children[1]
+        const showmore = document.querySelector(".ranking").children[2]
+        var id = Telegram.WebApp.initDataUnsafe.user.id
+        var data = []
+        var clicks = 0
+        var total = 0
+        var coin = document.querySelector(".biah")
+        const maxpush = 25
+        update()
+        showmore.addEventListener("click", showmoreevent)
+        showmore.addEventListener("touchend", showmoreevent)
+        function showmoreevent() {
+            if (showmore.innerText == "show more") {
+                showmore.innerText = "show less"
+                rankingmore.innerHTML = rank(data.rank.slice(3))
+            } else {
+                showmore.innerText = "show more"
+                rankingmore.innerHTML = ""
+            }
+        }
+        document.body.addEventListener("touchend", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            for (const i of e.changedTouches) {
+                click_event(i)
+            }
+        })
+        document.body.addEventListener("click", click_event)
+        function click_event(e) {
+            var rect = coin.getBoundingClientRect();
+            var y = Math.min(Math.max(e.pageY, rect.top), rect.bottom)
+            var x = Math.min(Math.max(e.pageX, rect.left), rect.right)
+            add_like(e.pageX, e.pageY, x, y)
+            x = ((x - rect.left) * maxpush * 2 / rect.width) - maxpush
+            y = ((y - rect.top) * maxpush * 2 / rect.width) - maxpush
+            coin.style.transform = "rotateX(" + (y * -1) + "deg) rotateY(" + x + "deg) rotateZ(0deg)"
+            clicks++;
+            total++
+            colect.innerText = show_number(total)
+            setTimeout(function () {
+                coin.style.transform = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)"
+            }, 300);
+
+        }
+        setInterval(() => {
+            update()
+            clicks = 0
+        }, 5000);
+
+        function update() {
+            fetch(location.origin + "/update?" + new URLSearchParams({
+                clicks,
+                id,
+            })).then(function (e) { return e.json() }).then(setd).catch(function () {
+                console.log("error connection")
+            })
+        }
+        function setd(e) {
+            data = e.data
+            total = e.c
+            remain.innerText = show_number(data.max)
+            colect.innerText = show_number(total)
+            data.rank.reverse()
+            ranking.innerHTML = rank(data.rank.slice(0, 3))
+            if (showmore.innerText != "show more") {
+                rankingmore.innerHTML = rank(data.rank.slice(3))
+            }
+            if (!isready) {
+                document.querySelector(".body").classList.remove("none")
+                isready = true
+            }
+        }
+        function rank(r) {
+            var out = ""
+            for (var i of r)
+                out += `
+                    <div class="profile">
+                        <div class="profile_img"><img class="fill" src="${location.origin}/pp?id=${i.id}&p=${i.p}">
+                        </div>
+                        <div class="">
+                            <div class="profile_name">${i.n}</div>
+                            <div class="profile_contact">
+                                <span class="icon"></span><span>${show_number(i.c)}</span>
+                            </div>
+                        </div>
+                    </div>`
+
+            return out
+        }
+
+        function show_number(number, f = 0) {
+            return (Math.round((+number) * (10 ** f)) / (10 ** f)).toLocaleString("en")
+        }
+        function add_like(left, top, aleft, atop) {
+            like.insertAdjacentHTML("beforeend", `<div style="top:${top}px;left:${left}px" class="likes"><span class="likes_img"></span></div>`)
+            var m = like.lastElementChild
+            setTimeout(function () {
+                m.style.top = atop + "px"
+                m.style.left = aleft + "px"
+                m.classList.add("hide")
+            }, 10);
+            setTimeout(function () {
+                m.remove()
+            }, 350)
+        }
+    }
+</script>
+
+</html>
