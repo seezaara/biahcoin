@@ -43,7 +43,7 @@
     }
 
     .shadow {
-        top: 120px;
+        top: 100px;
         width: 500%;
         height: 500%;
         border-radius: 100%;
@@ -85,9 +85,9 @@
     }
 
     .coinholder {
-        padding: 8% 0;
+        padding: 7% 0;
         width: 100vw;
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
     .symbol {
@@ -106,7 +106,7 @@
     .remain,
     .colect {
         font-size: 25px;
-        padding: 50px 0;
+        padding: 40px 0;
         width: 100%;
         text-align: center;
         color: #fff;
@@ -162,7 +162,7 @@
     }
 
     .showmore {
-        padding-bottom: 20px;
+        padding-bottom: 40px;
         text-align: center;
     }
 
@@ -197,6 +197,22 @@
 
     .hide {
         opacity: 0;
+    }
+
+    .links { 
+        width: fit-content;
+        padding: 0px;
+        z-index: 100000;
+    }
+
+    .links a {
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .links img {
+        padding: 0 6px;
+        box-sizing: content-box;
     }
 </style>
 
@@ -326,6 +342,16 @@
                     <div></div>
                     <div class="showmore">show more</div>
                 </div>
+                
+                <div class="links center">
+                    <a target="_blank" href="https://youtu.be/_2E9hkb3yy0">
+                        <img width="26" height="26" src="./youtube.svg">
+                    </a>
+                    <a target="_blank" href="https://github.com/seezaara/biahcoin">
+                        <img width="26" height="26" src="./github.svg">
+                    </a>
+                </div>
+
             </div>
 
         </div>
@@ -333,7 +359,6 @@
 </body>
 <script>
     function stop(e) {
-        console.log(document.body.scrollTop)
         if (document.body.scrollTop <= 10)
             document.body.scrollTop = 10
     }
@@ -372,6 +397,8 @@
             }
         }
         document.body.addEventListener("touchend", function (e) {
+            if (e.changedTouches[0].target.closest("a"))
+                return
             e.preventDefault()
             e.stopPropagation()
             for (const i of e.changedTouches) {
@@ -380,6 +407,7 @@
         })
         document.body.addEventListener("click", click_event)
         function click_event(e) {
+            console.log()
             var rect = coin.getBoundingClientRect();
             var y = Math.min(Math.max(e.pageY, rect.top), rect.bottom)
             var x = Math.min(Math.max(e.pageX, rect.left), rect.right)
